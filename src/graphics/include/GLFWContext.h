@@ -4,7 +4,7 @@
 namespace leo {
 
 
-	class GLFWGLContext : public leo::GLContext
+	class GLFWGLContext : public leo::IGLContext
 	{
 	public:
 		GLFWGLContext() {}
@@ -12,8 +12,5 @@ namespace leo {
 
 		// Inherited via GLContext
 		virtual void setMajorMinorVersion(int major, int minor) override;
-
-		virtual void setActiveGLContext() override;
-
 	};
 }

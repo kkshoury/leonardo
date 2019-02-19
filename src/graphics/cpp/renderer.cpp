@@ -44,10 +44,10 @@ void Renderer::initBuffers() {
 }
 
 void Renderer::initShaders() {
-	int vs = Shaders::compileShader(GL_VERTEX_SHADER, Shaders::getDefaultVertexShader());
-	int fs = Shaders::compileShader(GL_FRAGMENT_SHADER, Shaders::getDefaultFragmentShader());
+	int vs = leo::Shaders::createAndCompileShader(GL_VERTEX_SHADER, leo::Shaders::getDefaultVertexShader());
+	int fs = leo::Shaders::createAndCompileShader(GL_FRAGMENT_SHADER, leo::Shaders::getDefaultFragmentShader());
 
-	int program = Shaders::createProgram(vs, fs);
+	int program = leo::Shaders::createProgram(vs, fs);
 	this->program = program;
 	glUseProgram(program);
 	shadersInitialized = true;

@@ -1,10 +1,10 @@
+#include "graphics.h"
 #include "InputEventEmitter.h"
-#include "GLFWRenderTarget.h"
 
 leo::InputEventEmitter::InputEventEmitter() 
 {
-	_keyListeners = std::vector<std::shared_ptr<KeyEventListener>>();
-	_mouseListeners = std::vector<std::shared_ptr<MouseEventListener>>();
+	//_keyListeners = std::vector<KeyEventListener*>();
+	//_mouseListeners = std::vector<MouseEventListener*>();
 }
 
 leo::InputEventEmitter::~InputEventEmitter()
@@ -27,12 +27,12 @@ void leo::InputEventEmitter::waitForEventsTimeout(double ms) const
 	glfwWaitEventsTimeout(ms);
 }
 
-void leo::InputEventEmitter::addKeyListener(std::shared_ptr<KeyEventListener> listener, int eventType)
+void leo::InputEventEmitter::addKeyListener(KeyEventListener* listener, InputEventEmitter::InputEventType type)
 {
 	_keyListeners.push_back(listener);
 }
 
-void leo::InputEventEmitter::addMouseListener(std::shared_ptr<MouseEventListener> listener, int eventType)
+void leo::InputEventEmitter::addMouseListener(MouseEventListener* listener, InputEventEmitter::InputEventType type)
 {
 	_mouseListeners.push_back(listener);
 }

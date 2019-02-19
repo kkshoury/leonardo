@@ -2,7 +2,7 @@
 #include "shaders.h"
 #include "glfw3.h"
 
-GLuint Shaders::compileShader(GLenum type, std::string src) {
+GLuint leo::Shaders::createAndCompileShader(GLenum type, std::string src) {
 
 	GLuint shader = glCreateShader(type);
 	const char* cstr = src.c_str();
@@ -34,7 +34,7 @@ GLuint Shaders::compileShader(GLenum type, std::string src) {
 	return shader;
 }
 
-GLuint Shaders::createProgram(GLuint vs, GLuint fs) {
+GLuint leo::Shaders::createProgram(GLuint vs, GLuint fs) {
 
 	if (vs == 0 || fs == 0) {
 		return 0;
@@ -61,7 +61,7 @@ GLuint Shaders::createProgram(GLuint vs, GLuint fs) {
 }
 
 
-std::string Shaders::getDefaultVertexShader() {
+std::string leo::Shaders::getDefaultVertexShader() {
 	return
 		"#version 430 core \n"
 		"layout (location = 0) in vec3 position;     \n"
@@ -70,7 +70,7 @@ std::string Shaders::getDefaultVertexShader() {
 		"   gl_Position = vec4(position, 1.0);   \n"
 		"}                            \n";
 }
-std::string Shaders::getDefaultFragmentShader() {
+std::string leo::Shaders::getDefaultFragmentShader() {
 	return
 		"#version 430 core \n"
 		"out vec4 FragColor;                            \n"
@@ -81,7 +81,7 @@ std::string Shaders::getDefaultFragmentShader() {
 
 }
 
-std::string Shaders::getDefaultVertexShaderWebGL() {
+std::string leo::Shaders::getDefaultVertexShaderWebGL() {
 	return
 		"attribute vec3 position;     \n"
 		"attribute vec3 color;		  \n"
@@ -93,7 +93,7 @@ std::string Shaders::getDefaultVertexShaderWebGL() {
 
 		"}                            \n";
 }
-std::string Shaders::getDefaultFragmentShaderWebGL() {
+std::string leo::Shaders::getDefaultFragmentShaderWebGL() {
 	return
 		"precision mediump float;                            \n"
 		"varying vec3 var_color;"

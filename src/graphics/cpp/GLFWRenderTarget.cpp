@@ -114,7 +114,7 @@ void leo::GLFWRenderTarget::setOpenGLMajorMinorVersion(int major, int minor)
 	this->minor = minor;
 }
 
-leo::GLContext* leo::GLFWRenderTarget::getGLContext() {
+leo::IGLContext* leo::GLFWRenderTarget::getGLContext() {
 	return nullptr;
 }
 

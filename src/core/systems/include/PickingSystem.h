@@ -40,9 +40,9 @@ namespace leo {
 		virtual bool canProcess(const std::vector<std::shared_ptr<Component>>& componentList) override;
 
 	private:
-		std::unique_ptr<std::vector<std::shared_ptr<Component>>> _componentList;
-		std::shared_ptr<PickKeyListener> _keyListener;
-		std::shared_ptr<PickMouseListener> _mouseListener;
+		std::unique_ptr<std::vector<Component*>> _componentList;
+		std::unique_ptr<PickKeyListener> _keyListener;
+		std::unique_ptr<PickMouseListener> _mouseListener;
 		InputEventEmitter* _inputEventEmitter;
 
 		bool _on;

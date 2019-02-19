@@ -34,8 +34,8 @@ void leo::PickingSystem::preInit()
 
 void leo::PickingSystem::init(const AppFrameworkContext& context)
 {
-	_keyListener = std::make_shared<PickKeyListener>();
-	_mouseListener = std::make_shared<PickMouseListener>();
+	//_keyListener = std::make_shared<PickKeyListener>();
+	//_mouseListener = std::make_shared<PickMouseListener>();
 	_inputEventEmitter = context.inputEventEmitter;
 }
 
@@ -46,8 +46,8 @@ void leo::PickingSystem::postInit()
 
 void leo::PickingSystem::start()
 {
-	_inputEventEmitter->addKeyListener(_keyListener, 0);
-	_inputEventEmitter->addMouseListener(_mouseListener, 0);
+	_inputEventEmitter->addKeyListener(_keyListener.get(), InputEventEmitter::InputEventType::DOWN);
+	_inputEventEmitter->addMouseListener(_mouseListener.get(), InputEventEmitter::InputEventType::DOWN);
 }
 
 void leo::PickingSystem::end()

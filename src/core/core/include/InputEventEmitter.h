@@ -9,16 +9,12 @@
 #include "KeyEventListener.h"
 #include "MouseEventListener.h"
 #include "GLFWEventEmitter.h"
-#include "glfw3.h"
 
 namespace leo {
 
 	class InputEventEmitter : public AppFrameworkObject {
 	public:
-		const static int INPUT_EVENT_KEY_DOWN = 0;
-		const static int INPUT_EVENT_KEY_UP = 1;
-		const static int INPUT_EVENT_KEY_CLICK = 2;
-		const static int INPUT_EVENT_KEY_DOUBLE_CLICK = 3;
+		enum class InputEventType {DOWN, UP, CLICK, MOVE};
 
 		InputEventEmitter();
 		~InputEventEmitter();
@@ -27,8 +23,8 @@ namespace leo {
 		void waitForEvents() const;
 		void waitForEventsTimeout(double ms) const;
 
-		void addKeyListener(std::shared_ptr<KeyEventListener> listener, int even_type);
-		void addMouseListener(std::shared_ptr<MouseEventListener> listener, int event_type);
+		void addKeyListener(KeyEventListener* listener, InputEventType type);
+		void addMouseListener(MouseEventListener* listener, InputEventType type);
 
 		// Inherited via AppFrameworkObject
 		virtual void preInit() override;
@@ -48,8 +44,8 @@ namespace leo {
 		friend void glfwMouseMoveCallback(GLFWwindow* window, double x, double inverseY);
 
 	private:
-		std::vector<std::shared_ptr<KeyEventListener>> _keyListeners;
-		std::vector<std::shared_ptr<MouseEventListener>> _mouseListeners;
+		std::vector<KeyEventListener*> _keyListeners;
+		std::vector<MouseEventListener*> _mouseListeners;
 		GLFWwindow* window;
 
 		void _emitKeyEvent(GLFWwindow* w, int key, int scancode, int action, int mods);

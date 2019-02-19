@@ -13,17 +13,17 @@ void leo::App::preInit() {
 
 void leo::App::init() {
 	//initialize main components of application
-	window = new GLFWRenderTarget();
+	window = std::make_unique<GLFWRenderTarget>();
 	window->setTitle("Leonardo");
 	window->setDim(800, 600);
 	window->setOpenGLMajorMinorVersion(4, 3);
 	window->init();
 
-	context = new AppFrameworkContext();
-	inputEventEmitter = new InputEventEmitter();
+	context = std::make_unique<AppFrameworkContext>();
+	inputEventEmitter = std::make_unique<InputEventEmitter>();
 
-	context->renderTarget = window;
-	context->inputEventEmitter = inputEventEmitter;
+	context->renderTarget = window.get();
+	context->inputEventEmitter = inputEventEmitter.get();
 
 	inputEventEmitter->init(*context);
 
@@ -86,7 +86,7 @@ void leo::App::dispose()
 		(*itr)->dispose();
 	}
 
-	delete window;
-	delete context;
-	delete appObjects;
+	window.release();
+	context.release();
+	appObjects.release();
 }

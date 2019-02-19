@@ -2,13 +2,11 @@
 #define _LEO_GRAPHICS_
 #pragma once
 
-//gl
+//gl contexts
 #include "../include/GLContext.h"
 #include "../include/GLFWContext.h"
 
-//glfw
-#include "glad.h"
-#include "glfw3.h"
+
 
 //render targets
 #include "../include/GLRenderTarget.h"

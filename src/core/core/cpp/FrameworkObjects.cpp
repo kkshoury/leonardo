@@ -1,21 +1,17 @@
 #include "graphics.h"
-#include "common.h"
 #include "io.h"
 #include "components.h"
 #include "AppFrameworkObject.h"
 
 #include <vector>
+#include <memory>
 
 namespace leo {
 
-	std::vector<std::shared_ptr<leo::AppFrameworkObject>>* getAppObjects() {
-		auto list = new std::vector<std::shared_ptr<leo::AppFrameworkObject>>();
+	std::unique_ptr<std::vector<leo::AppFrameworkObject*>> getAppObjects() {
+		auto list = std::make_unique<std::vector<leo::AppFrameworkObject*>>();
 		
-		list->push_back(std::shared_ptr<leo::AppFrameworkObject>(new PickingSystem()));
-
-
-
-		return list;
+		return std::move(list);
 	}	
 
 }

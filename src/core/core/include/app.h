@@ -3,10 +3,13 @@
 #include "components.h"
 #include "GLFWEventEmitter.h"
 #include "AppFrameworkContext.h"
+#include "SceneController.h"
+
+#include<memory>
 
 namespace leo {
 
-	std::vector<std::shared_ptr<leo::AppFrameworkObject>>* getAppObjects();
+	std::unique_ptr<std::vector<leo::AppFrameworkObject*>> getAppObjects();
 
 
 	class App {
@@ -19,10 +22,13 @@ namespace leo {
 		virtual void end();
 		virtual void dispose();
 	private:
-		GLRenderTarget* window;
-		InputEventEmitter* inputEventEmitter;
-		AppFrameworkContext* context;
-		std::vector<std::shared_ptr<leo::AppFrameworkObject>>* appObjects;
+		std::unique_ptr<GLFWRenderTarget> window;
+		std::unique_ptr < InputEventEmitter> inputEventEmitter;
+		std::unique_ptr < AppFrameworkContext> context;
+		std::unique_ptr < std::vector<leo::AppFrameworkObject*> > appObjects;
+		std::unique_ptr <SceneController> _ptrSceneController;
+	protected:
+		
 	};
 
 

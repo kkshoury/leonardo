@@ -2,14 +2,17 @@
 #include "GLContext.h"
 
 namespace leo {
+	
+	class IRenderTarget {
 
+	};
 
-	class GLRenderTarget
+	class GLRenderTarget : IRenderTarget
 	{
 	public:
 		virtual void setId(const std::string& id) = 0;
 		virtual void setOpenGLMajorMinorVersion(int major, int minor) = 0;
-		virtual leo::GLContext* getGLContext() = 0;
+		virtual leo::IGLContext* getGLContext() = 0;
 
 		virtual void setDim(int width, int height) = 0;
 		virtual int getWidth() const = 0;

@@ -9,7 +9,7 @@ namespace leo {
 		GLFWRenderTarget();
 		~GLFWRenderTarget();
 
-		virtual leo::GLContext* getGLContext() override;
+		virtual leo::IGLContext* getGLContext() override;
 		virtual void setOpenGLMajorMinorVersion(int major, int minor) override;
 		
 		virtual void setId(const std::string& id) override;

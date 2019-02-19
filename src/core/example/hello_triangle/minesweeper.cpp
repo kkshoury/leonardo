@@ -1,22 +1,21 @@
 #include "app.h"
 
 
-namespace leo_hello_triangle {
+namespace leo_minesweeper {
 
-	class MyApp : public leo::App {
+	class MinesweeperApp : public leo::App {
 	public:
 		virtual void start() override {
-			App::start();
+		
 		}
 	};
 
-
 	int leo_main(int argc, char* argv) {
-		MyApp* app = new MyApp();
-		
+		MinesweeperApp* app = new MinesweeperApp();
+
 		app->preInit();
 		app->init();
-		app->postInit(); 
+		app->postInit();
 		app->start();
 		app->end();
 
@@ -25,6 +24,6 @@ namespace leo_hello_triangle {
 		return 0;
 	}
 
-	
+
 }
 
