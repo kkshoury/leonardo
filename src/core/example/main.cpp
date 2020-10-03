@@ -8,5 +8,5 @@ namespace leo_minesweeper {
 }
 
 int main(int argc, char* argv) {
-	leo_minesweeper::leo_main(argc, argv);
+	leo_hello_triangle::leo_main(argc, argv);
 }
