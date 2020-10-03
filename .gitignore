@@ -1,0 +1,6 @@
+# build
+bin/
+
+# cmake
+vs/
+CMakeFiles/
